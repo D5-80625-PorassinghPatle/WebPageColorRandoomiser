@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomisers</title>
+</head>
+<body style="text-align: center; background-color: black; color: white;">
+
+    <h1>
+        This is a simple color Randomiser
+    </h1>
+
+    <button id="stopBtn">
+        STOP
+    </button>
+
+    <button id="startBtn"> Start</button>
+    <br>
+    <br>
+    <p>
+        major change in this Project we are using most used function in js like timeout interval 
+        stop the page interval, set time interval etc.
+    </p>
+
+    <script>
+        let intervalId;
+
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        document.getElementById('startBtn').addEventListener('click', function() {
+            if(intervalId==null){
+            intervalId = setInterval(function() {
+                document.body.style.backgroundColor = getRandomColor();
+            }, 1000);
+        }});
+
+        document.getElementById('stopBtn').addEventListener('click', function() {
+            clearInterval(intervalId);
+            intervalId=null;
+        });
+    </script>
+</body>
+</html>
